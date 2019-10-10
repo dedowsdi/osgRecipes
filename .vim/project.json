@@ -1,0 +1,828 @@
+{
+  "nurb": {
+    "args": "",
+    "gdb": {
+      "breakpoint": {}
+    },
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "test": {
+    "args": "",
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file test.cpp --line 16": null
+      }
+    }
+  },
+  "all": {
+    "args": "",
+    "lldb": {
+      "breakpoint": {}
+    }
+  },
+  "axis": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "__default__": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "gdb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "animPath": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "qt4": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file qt4.cpp --line 66": null
+      },
+      "manual": []
+    }
+  },
+  "helloworld": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file fourView.cpp --line 133": null
+      },
+      "manual": []
+    },
+    "exe_args": "--model cessna.osg"
+  },
+  "compositeViewer": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "qt4_single": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "qt4_qthread": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "qt4_widgets": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "cube": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "breakpoint": [
+      {
+        "file": "cube.cpp",
+        "line": 95
+      },
+      {
+        "file": "SmoothingVisitor.cpp",
+        "line": 616
+      },
+      {
+        "file": "SmoothingVisitor.cpp",
+        "line": 690
+      },
+      {
+        "file": "cube.cpp",
+        "line": 92
+      },
+      {
+        "file": "SmoothingVisitor.cpp",
+        "line": 703
+      }
+    ]
+  },
+  "cube3": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "car": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "animPivot": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "animSwitch": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "animChannel": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "door": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "polygonMode": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "fadein": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "shape": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "transform": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "updateCallback": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "backgroundImage": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "log": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "exe_args": "cessna.osg"
+  },
+  "octahedron": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "driveCessna": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "quad": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "timerEvent": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "light": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "lightAttribute": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "loop": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "mirrorScene": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "multiSample": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "fog": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "cursor": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "upsidedown": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "windowMode": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "boundingbox": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file boundingbox.cpp --line 23": null
+      },
+      "manual": []
+    }
+  },
+  "revolution": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "breakpoint": [
+      {
+        "file": "TriangleFunctor",
+        "line": 62
+      }
+    ]
+  },
+  "extrude": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "bfsVisitor": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "billboard": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "breakpoint": [
+      {
+        "file": "Billboard.cpp",
+        "line": 157
+      }
+    ]
+  },
+  "billboardNode": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "billboardTree": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "borderline": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "dynamicGeometry": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "faceCollector": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "followModel": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "pick": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "selectFace": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "selectPoint": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "positionAttitudeTransform": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "particleFountain": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "breakpoint": [
+      {
+        "file": "Particle.cpp",
+        "line": 63
+      }
+    ]
+  },
+  "particleRotarySprinkler": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "imageSequence": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "highlight": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "serializer": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "text": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "text3d": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "tessellate": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "texture": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "osgdb_tri": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "ribbon": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "fixVerticalUp": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "nurbSurface": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "gimbal": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "euler": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "cartoonCow": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "cubicBezier": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "rtt": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "gridfloor": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "clock": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    },
+    "gdb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "compass": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "fourView": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file GraphicsWindowX11.cpp --line 2140": null
+      },
+      "manual": []
+    }
+  },
+  "cameraManipulator2D": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "shareTexture": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "movie": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "shadow": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "occludeCull": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "scrollingText": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "trackerManipulator": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "translucent": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "clone": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "outline": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "stateAttrib": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "terrain": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "universe": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "blender": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file blendermanipulator.cpp --line 31": null
+      },
+      "manual": []
+    },
+    "gdb": {
+      "breakpoint": {
+        "b blendermanipulator.cpp:29": null
+      },
+      "manual": []
+    }
+  },
+  "starfield": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "menger_sponge_fractal": {
+    "breakpoint": [
+      {
+        "file": "menger_sponge_fractal.cpp",
+        "line": 122
+      },
+      {
+        "file": "Light.cpp",
+        "line": 37
+      },
+      {
+        "file": "menger_sponge_fractal.cpp",
+        "line": 124
+      }
+    ],
+    "manual": []
+  },
+  "snake": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "drawInstanced": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "purple_rain": {
+    "breakpoint": [
+      {
+        "file": "Drawable.cpp",
+        "line": 606
+      },
+      {
+        "file": "Drawable.cpp",
+        "line": 611
+      },
+      {
+        "file": "purple_rain.cpp",
+        "line": 25
+      }
+    ],
+    "manual": []
+  },
+  "space_invader": {
+    "breakpoint": [
+      {
+        "file": "space_invader.cpp",
+        "line": 152
+      },
+      {
+        "file": "space_invader.cpp",
+        "line": 80
+      },
+      {
+        "file": "space_invader.cpp",
+        "line": 607
+      }
+    ],
+    "manual": []
+  },
+  "mitosis": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "solar": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "maze_generator": {
+    "breakpoint": [
+      {
+        "file": "maze_generator.cpp",
+        "line": 320
+      },
+      {
+        "file": "SingleWindow.cpp",
+        "line": 95
+      }
+    ],
+    "manual": []
+  },
+  "noise_terrain": {
+    "breakpoint": [
+      {
+        "file": "noise_terrain.cpp",
+        "line": 59
+      }
+    ],
+    "manual": []
+  },
+  "lorenz_system": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "reaction_diffusion": {
+    "breakpoint": [
+      {
+        "file": "State.cpp",
+        "line": 1519
+      },
+      {
+        "file": "reaction_diffusion.cpp",
+        "line": 239
+      }
+    ],
+    "manual": []
+  },
+  "fractal_tree": {
+    "breakpoint": [
+      {
+        "file": "fractal_tree.cpp",
+        "line": 156
+      }
+    ],
+    "manual": []
+  },
+  "lsystem_tree": {
+    "breakpoint": [
+      {
+        "file": "lsystem_tree.cpp",
+        "line": 140
+      }
+    ],
+    "manual": []
+  },
+  "space_colonization_tree_3d": {
+    "breakpoint": [
+      {
+        "file": "SmoothingVisitor.cpp",
+        "line": 703
+      }
+    ],
+    "manual": []
+  },
+  "firework": {
+    "breakpoint": [
+      {
+        "file": "firework.cpp",
+        "line": 71
+      },
+      {
+        "file": "Particle.cpp",
+        "line": 88
+      }
+    ],
+    "manual": []
+  },
+  "fx_transparency": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "poisson_disk_sample": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "levy_flight": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "attraction_repulsion": {
+    "breakpoint": [
+      {
+        "file": "attraction_repulsion.cpp",
+        "line": 108
+      }
+    ],
+    "manual": []
+  },
+  "steer": {
+    "breakpoint": [
+      {
+        "file": "steer.cpp",
+        "line": 222
+      }
+    ],
+    "manual": []
+  },
+  "fractal_spirograph": {
+    "breakpoint": [
+      {
+        "file": "fractal_spirograph.cpp",
+        "line": 255
+      }
+    ],
+    "manual": []
+  },
+  "cube_wave": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "knot": {
+    "breakpoint": [
+      {
+        "file": "knot.cpp",
+        "line": 60
+      }
+    ],
+    "manual": []
+  },
+  "snow": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "double_pendulum": {
+    "breakpoint": [],
+    "manual": []
+  },
+  "bezier": {
+    "breakpoint": [],
+    "manual": []
+  }
+}

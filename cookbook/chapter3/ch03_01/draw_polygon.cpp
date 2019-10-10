@@ -3,11 +3,15 @@
  * Author: Wang Rui <wangray84 at gmail dot com>
 */
 
+#include <iostream>
+
 #include <osg/Geometry>
 #include <osg/Geode>
 #include <osg/LineWidth>
 #include <osgUtil/Tessellator>
 #include <osgViewer/Viewer>
+#include <osgViewer/ViewerEventHandlers>
+#include <osgGA/StateSetManipulator>
 
 #include "CommonFunctions"
 
@@ -36,11 +40,17 @@ int main( int argc, char** argv )
     polygon->addPrimitiveSet( new osg::DrawArrays(GL_QUADS, 0, 4) );
     polygon->addPrimitiveSet( new osg::DrawArrays(GL_QUADS, 4, 4) );
     
+    // after tesselate primitive sets are changed, they are usually DrawElements*. If
+    // There are new vertices created, they are push after the original ones.
+    // Use TESS_TYPE_GEOMETRY if you want to tess everthing together, other wise
+    // use TESS_TYPE_DRAWABLE if you wan to tess everythign separately,
+    // otherwise use TESS_TYPE_POLYGONS if you just want to tess polygons
+    // (separately) only.
     osgUtil::Tessellator tessellator;
     tessellator.setTessellationType( osgUtil::Tessellator::TESS_TYPE_GEOMETRY );
     tessellator.setWindingType( osgUtil::Tessellator::TESS_WINDING_ODD );
     tessellator.retessellatePolygons( *polygon );
-    
+
     // Construct the borderlines geometry
     osg::ref_ptr<osg::Vec4Array> colors = new osg::Vec4Array(1);
     (*colors)[0].set( 1.0f, 1.0f, 0.0f, 1.0f );
@@ -63,5 +73,9 @@ int main( int argc, char** argv )
     
     osgViewer::Viewer viewer;
     viewer.setSceneData( root.get() );
+    osgGA::StateSetManipulator* ssm =  new osgGA::StateSetManipulator;
+    ssm->setStateSet(root->getOrCreateStateSet());
+    viewer.addEventHandler(ssm);
+    viewer.addEventHandler(new osgViewer::StatsHandler);
     return viewer.run();
 }

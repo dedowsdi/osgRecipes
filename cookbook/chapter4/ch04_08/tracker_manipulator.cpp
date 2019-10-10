@@ -31,7 +31,7 @@ int main( int argc, char** argv )
     root->addChild( terrain.get() );
     
     osg::ref_ptr<osgGA::NodeTrackerManipulator> nodeTracker = new osgGA::NodeTrackerManipulator;
-    nodeTracker->setHomePosition( osg::Vec3(0, -10.0, 0), osg::Vec3(), osg::Z_AXIS );
+    nodeTracker->setHomePosition( osg::Vec3(0, 20.0, 10), osg::Vec3(0, 0, 0), osg::Z_AXIS );
     nodeTracker->setTrackerMode( osgGA::NodeTrackerManipulator::NODE_CENTER_AND_ROTATION );
     nodeTracker->setRotationMode( osgGA::NodeTrackerManipulator::TRACKBALL );
     nodeTracker->setTrackNode( model );
@@ -41,7 +41,7 @@ int main( int argc, char** argv )
     keySwitch->addMatrixManipulator( '2', "NodeTracker", nodeTracker.get() );
     
     osgViewer::Viewer viewer;
-    viewer.setCameraManipulator( keySwitch.get() );
+    viewer.setCameraManipulator(nodeTracker);
     viewer.setSceneData( root.get() );
     return viewer.run();
 }

@@ -1,6 +1,9 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.9)
+
 PROJECT(osgRecipes)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4.7)
+cmake_policy(SET CMP0072 OLD)
+
 SET(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "add a postfix for Debug mode, usually d on windows")
 
 IF(COMMAND CMAKE_POLICY)

@@ -59,6 +59,14 @@ int main( int argc, char** argv )
         {
             osg::Camera* camera = createSlaveCamera(
                 tileWidth*j, totalHeight - tileHeight*(i+1), tileWidth-1, tileHeight-1 );
+
+            // slaveView = mainView * projOffset
+            // slaveProj = mainProj * projOffset
+
+            // for x part, do extrinsic transform :
+            // scale [-1, 1] to [-numColumns, numColumns],
+            // the ith row, jth col lower left x is (-numColumns + 2 * j),
+            // add (numColumns - 2 * j - 1 ) to translate it to -1, same rule applies to y.
             osg::Matrix projOffset =
                 osg::Matrix::scale(numColumns, numRows, 1.0) *
                 osg::Matrix::translate(numColumns-1-2*j, numRows-1-2*i, 0.0);

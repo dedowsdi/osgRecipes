@@ -53,7 +53,7 @@ int main( int argc, char** argv )
 {
     osg::ArgumentParser arguments(&argc,argv);
     
-    double zNear = 1.0, zMid = 1e4, zFar = 2e8;
+    double zNear = 1.0, zMid = 1e5, zFar = 2e8;
     arguments.read( "--depth-partition", zNear, zMid, zFar );
     
     osg::ref_ptr<osgViewer::DepthPartitionSettings> dps = new osgViewer::DepthPartitionSettings;
@@ -63,11 +63,22 @@ int main( int argc, char** argv )
     dps->_zFar = zFar;
     
     osgViewer::Viewer viewer;
+    viewer.setLightingMode(osg::View::NO_LIGHT);
     viewer.getCamera()->setClearColor( osg::Vec4(0.0f, 0.0f, 0.0f, 1.0f) );
+    viewer.getCamera()->setName("main");
     viewer.setSceneData( createScene() );
-    //viewer.setUpDepthPartition(dps.get());
     viewer.setCameraManipulator( new osgGA::TrackballManipulator );
+
+    // be careful here, setHomePosition() only setup home position, id didn't
+    // set up current transform, this is done by calling
+    // CameraManipulator::home(...), which is called by
+    // osgViewer::View::assignSceneDataToCamera, which is called by some
+    // ViewConfig.
     viewer.getCameraManipulator()->setHomePosition(
         osg::Vec3d(0.0,-12.5*radius_earth,0.0), osg::Vec3d(), osg::Vec3d(0.0,0.0,1.0) );
+
+    // must be called after camera in position
+    viewer.setUpDepthPartition(dps.get());
+
     return viewer.run();
 }

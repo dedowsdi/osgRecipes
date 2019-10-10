@@ -26,7 +26,16 @@ osgAnimation::Bone* createBone( const char* name, const osg::Vec3& trans, osg::G
     updater->getStackedTransforms().push_back( new osgAnimation::StackedQuaternionElement("quaternion") );
     
     bone->setUpdateCallback( updater.get() );
-    bone->setMatrixInSkeletonSpace( osg::Matrix::translate(trans) * bone->getMatrixInSkeletonSpace() );
+    osgAnimation::Bone* parentBone = bone->getBoneParent();
+
+    //  As matrixInSkeletonSpace transfrom from root to current bone, you need
+    //  to transfrom vertex set back to root before you apply
+    //  matrixInSkeletonSpace, that's the job osg::Fog invBindMatrixInSkeletonSpace.
+    if (parentBone)
+      bone->setMatrixInSkeletonSpace( osg::Matrix::translate(trans) * parentBone->getMatrixInSkeletonSpace() );
+    else
+      bone->setMatrixInSkeletonSpace( osg::Matrix::translate(trans) );
+    bone->setInvBindMatrixInSkeletonSpace(osg::Matrix::inverse(bone->getMatrixInSkeletonSpace()) );
     bone->setName( name );
     return bone.get();
 }
@@ -55,15 +64,17 @@ void addVertices( const char* name1, float length1,
 {
     osg::Vec3Array* va = static_cast<osg::Vec3Array*>( geom->getVertexArray() );
     unsigned int start = va->size();
+    unsigned int idx = start;
+    // you must skin every vertex, there has no default bone ?
     va->push_back( dir * 0.0f );
+    (*vim)["bone0"].push_back( osgAnimation::VertexIndexWeight(idx++, 1.0f) );
     va->push_back( dir * length1 );
-    va->push_back( dir * length1 );
-    (*vim)[name1].push_back( osgAnimation::VertexIndexWeight(start+2, 1.0f) );
+    (*vim)[name1].push_back( osgAnimation::VertexIndexWeight(idx++, 1.0f) );
     va->push_back( dir * length2 );
-    (*vim)[name1].push_back( osgAnimation::VertexIndexWeight(start+3, 1.0f) );
-    va->push_back( dir * length2 );
-    (*vim)[name2].push_back( osgAnimation::VertexIndexWeight(start+4, 1.0f) );
-    geom->addPrimitiveSet( new osg::DrawArrays(GL_LINE_STRIP, start, 5) );
+    (*vim)[name1].push_back( osgAnimation::VertexIndexWeight(idx++, 1.0f) );
+    va->push_back( dir * length2 * 2 );
+    (*vim)[name2].push_back( osgAnimation::VertexIndexWeight(idx++, 1.0f) );
+    geom->addPrimitiveSet( new osg::DrawArrays(GL_LINE_STRIP, start, 4) );
 }
 
 osg::Geode* createBoneShapeAndSkin()
@@ -72,6 +83,7 @@ osg::Geode* createBoneShapeAndSkin()
     geometry->setVertexArray( new osg::Vec3Array );
     
     osg::ref_ptr<osgAnimation::VertexInfluenceMap> vim = new osgAnimation::VertexInfluenceMap;
+    (*vim)["bone0"].setName( "bone0" );
     (*vim)["bone11"].setName( "bone11" );
     (*vim)["bone12"].setName( "bone12" );
     (*vim)["bone21"].setName( "bone21" );
@@ -90,7 +102,9 @@ osg::Geode* createBoneShapeAndSkin()
     rigGeom->setSourceGeometry( geometry.get() );
     rigGeom->setInfluenceMap( vim.get() );
     rigGeom->setUseDisplayList( false );
-    
+    rigGeom->setInitialBound(
+      osg::BoundingBox(osg::Vec3(-2, -2, -2), osg::Vec3(2, 2, 2)));
+
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable( rigGeom.get() );
     geode->getOrCreateStateSet()->setAttributeAndModes( new osg::LineWidth(15.0f) );

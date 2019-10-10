@@ -13,10 +13,10 @@
 
 osg::MatrixTransform* createCompassPart( const std::string& image, float radius, float height )
 {
-    osg::Vec3 center(-radius, -radius, height);
+    osg::Vec3 corner(-radius, -radius, height);
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable(
-        createTexturedQuadGeometry(center, osg::Vec3(radius*2.0f,0.0f,0.0f), osg::Vec3(0.0f,radius*2.0f,0.0f)) );
+        createTexturedQuadGeometry(corner, osg::Vec3(radius*2.0f,0.0f,0.0f), osg::Vec3(0.0f,radius*2.0f,0.0f)) );
     
     osg::ref_ptr<osg::Texture2D> texture = new osg::Texture2D;
     texture->setImage( osgDB::readImageFile(image) );

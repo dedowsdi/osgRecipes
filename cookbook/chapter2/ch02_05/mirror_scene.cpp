@@ -16,9 +16,12 @@ int main( int argc, char** argv )
     
     float z = -10.0f;
     osg::ref_ptr<osg::MatrixTransform> reverse = new osg::MatrixTransform;
-    reverse->preMult(osg::Matrix::translate(0.0f, 0.0f, -z) *
-                     osg::Matrix::scale(1.0f, 1.0f, -1.0f) *
-                     osg::Matrix::translate(0.0f, 0.0f, z) );
+    // reverse->preMult(osg::Matrix::translate(0.0f, 0.0f, -z) *
+    //                  osg::Matrix::scale(1.0f, 1.0f, -1.0f) *
+    //                  osg::Matrix::translate(0.0f, 0.0f, z) );
+    reverse->preMult(osg::Matrix::translate(0.0f, 0.0f, -2*z) *
+                     osg::Matrix::scale(1.0f, 1.0f, -1.0f) );
+
     reverse->addChild( scene.get() );
     
     osg::ref_ptr<osg::ClipPlane> clipPlane = new osg::ClipPlane;

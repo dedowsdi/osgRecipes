@@ -47,7 +47,7 @@ osgAnimation::Bone* createBone( const char* name, const osg::Vec3& trans, osg::G
     updater->getStackedTransforms().push_back( new osgAnimation::StackedQuaternionElement("quaternion") );
     
     bone->setUpdateCallback( updater.get() );
-    bone->setMatrixInSkeletonSpace( osg::Matrix::translate(trans) * bone->getMatrixInSkeletonSpace() );
+    // bone->setMatrixInSkeletonSpace( osg::Matrix::translate(trans) * bone->getMatrixInSkeletonSpace() );
     bone->setName( name );
     return bone.get();
 }

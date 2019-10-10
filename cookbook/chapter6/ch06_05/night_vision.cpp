@@ -29,7 +29,8 @@ static const char* fragSource = {
     "   vec2 uv = vec2(0.4*sin(factor), 0.4*cos(factor));\n"
     "   vec3 n = texture2D(noiseTex, (gl_TexCoord[0].st*3.5) + uv).rgb;\n"
     
-    "   vec3 c = texture2D(sceneTex, gl_TexCoord[0].st + (n.xy*0.005)).rgb;\n"
+    // "   vec3 c = texture2D(sceneTex, gl_TexCoord[0].st + (n.xy*0.005)).rgb;\n"
+    "   vec3 c = texture2D(sceneTex, gl_TexCoord[0].st + ((n.xy-0.5f)*0.005)).rgb;\n"
     "   float lum = dot(vec3(0.30, 0.59, 0.11), c);\n"
     "   if (lum < 0.2) c *= 4.0;\n"
     
@@ -56,7 +57,7 @@ int main( int argc, char** argv )
     if ( !scene ) scene = osgDB::readNodeFile("cessna.osg");
     
     osg::ref_ptr<osg::Texture2D> tex2D = new osg::Texture2D;
-    tex2D->setTextureSize( 1024, 1024 );
+    tex2D->setTextureSize( 1920, 1080 );
     tex2D->setInternalFormat( GL_RGBA );
     
     osg::ref_ptr<osg::Camera> rttCamera = osgCookBook::createRTTCamera(osg::Camera::COLOR_BUFFER, tex2D.get());

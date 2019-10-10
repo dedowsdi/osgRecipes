@@ -29,15 +29,23 @@ void Compass::traverse( osg::NodeVisitor& nv )
         matrix.setTrans( osg::Vec3() );
         
         osg::Vec3 northVec = osg::Z_AXIS * matrix;
-        northVec.z() = 0.0f;
-        northVec.normalize();
+
+        // i think it's unnecessary to compute axis, as it should always be z
+        // axis
+        // northVec.z() = 0.0f;
+        // northVec.normalize();
         
-        osg::Vec3 axis = osg::Y_AXIS ^ northVec;
-        float angle = atan2(axis.length(), osg::Y_AXIS*northVec);
-        axis.normalize();
+        // osg::Vec3 axis = osg::Y_AXIS ^ northVec; // sin(θ)
+        // float angle = atan2(axis.length(), osg::Y_AXIS*northVec);
+        // axis.normalize();
         
+        // if ( _plateTransform.valid() )
+        //     _plateTransform->setMatrix( osg::Matrix::rotate(angle, axis) );
+
+        // note that only north or south is right, east and west is meaningless.
+        float angle = atan2(northVec.y(), northVec.x()) - osg::PI_2;
         if ( _plateTransform.valid() )
-            _plateTransform->setMatrix( osg::Matrix::rotate(angle, axis) );
+            _plateTransform->setMatrix( osg::Matrix::rotate(angle, osg::Z_AXIS) );
     }
     
     _plateTransform->accept( nv );

@@ -8,18 +8,34 @@
 #include <osg/Texture2D>
 #include <osgDB/ReadFile>
 #include <osgViewer/Viewer>
+#include <osgGA/TrackballManipulator>
 
 #include "CommonFunctions"
 
+#define ROWS 256
+#define COLS 256
+#define WIDTH 384.0f
+#define AMPLITUDE 16.0f
+
+#define to_string_i(s) #s
+#define to_string(s) to_string_i(s)
+
 const char* vertCode = {
+    "#define ROWS " to_string(ROWS) " \n"
+    "#define COLS " to_string(COLS) " \n"
+    "#define WIDTH " to_string(WIDTH) " \n"
+    "#define AMPLITUDE " to_string(AMPLITUDE) " \n"
     "uniform sampler2D defaultTex;\n"
     "const float PI2 = 6.2831852;\n"
     "void main()\n"
     "{\n"
-    "    float r = float(gl_InstanceID) / 256.0;\n"
-    "    vec2 uv = vec2(fract(r), floor(r) / 256.0);\n"
-    "    vec4 pos = gl_Vertex + vec4(uv.s * 384.0, 32.0 * sin(uv.s * PI2), uv.t * 384.0, 1.0);\n"
+    "    float r = float(gl_InstanceID) / ROWS;\n" // row
+    "    vec2 uv = vec2(fract(r), floor(r) / ROWS);\n"
+    // use any number that's greater than ROLS OR COLS to create gap between quads
+    "    vec4 pos = gl_Vertex + vec4(uv.s * WIDTH, AMPLITUDE * sin(uv.s * PI2), uv.t * WIDTH, 0.0);\n"
     "    gl_FrontColor = texture2D(defaultTex, uv);\n"
+    // "    gl_FrontColor = vec4(uv, 0, 1);\n"
+    // "    gl_FrontColor = vec4(gl_ModelViewMatrix[2].xyz, 1);\n"
     "    gl_Position = gl_ModelViewProjectionMatrix * pos;\n"
     "}\n"
 };
@@ -37,7 +53,7 @@ osg::Geometry* createInstancedGeometry( unsigned int numInstances )
     geom->setUseVertexBufferObjects( true );
     geom->setVertexArray( vertices.get() );
     geom->addPrimitiveSet( new osg::DrawArrays(GL_QUADS, 0, 4, numInstances) );
-    geom->setInitialBound( osg::BoundingBox(-1.0f,-32.0f,-1.0f, 192.0f, 32.0f, 192.0f) );
+    geom->setInitialBound( osg::BoundingBox(-1.0f,-AMPLITUDE,-1.0f, WIDTH, AMPLITUDE, WIDTH) );
     
     osg::ref_ptr<osg::Texture2D> texture = new osg::Texture2D;
     texture->setImage( osgDB::readImageFile("Images/osg256.png") );
@@ -49,18 +65,22 @@ osg::Geometry* createInstancedGeometry( unsigned int numInstances )
     osg::ref_ptr<osg::Program> program = new osg::Program;
     program->addShader( new osg::Shader(osg::Shader::VERTEX, vertCode) );
     geom->getOrCreateStateSet()->setAttributeAndModes( program.get() );
+
+
     return geom.release();
 }
 
 int main( int argc, char** argv )
 {
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
-    geode->addDrawable( createInstancedGeometry(256*256) );
-    
+    geode->addDrawable( createInstancedGeometry(ROWS * COLS) );
+
     osg::ref_ptr<osg::Group> root = new osg::Group;
     root->addChild( geode.get() );
-    
+
     osgViewer::Viewer viewer;
+    viewer.realize();
     viewer.setSceneData( root.get() );
+
     return viewer.run();
 }

@@ -55,6 +55,7 @@ public:
         osg::Vec3 point = result.getWorldIntersectPoint();
         osg::Matrix matrix = osg::computeLocalToWorld( result.nodePath );
         
+        // use vpw matrix if you want precision based on pixels
         osg::Matrix vpMatrix;
         if ( _camera.valid() )
         {

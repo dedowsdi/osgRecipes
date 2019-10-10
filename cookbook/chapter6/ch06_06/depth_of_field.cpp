@@ -46,6 +46,7 @@ static const char* combineFragSource = {
     "float getBlurFromLinearDepth(vec2 uv)\n"
     "{\n"
     "   float z = texture2D(depthTex, uv).x;\n"
+    "   z = z * 2 - 1.0f;\n"
     "   z = 2.0 * 10001.0 / (10001.0 - z * 9999.0) - 1.0;\n"  // Considering the default znear/zfar
     "   return clamp((z - focalDistance)/focalRange, 0.0, 1.0);\n"
     "}\n"

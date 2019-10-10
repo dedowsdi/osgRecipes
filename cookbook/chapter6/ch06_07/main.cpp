@@ -9,6 +9,7 @@
 #include <osg/MatrixTransform>
 #include <osgDB/ReadFile>
 #include <osgViewer/Viewer>
+#include <osgUtil/PrintVisitor>
 
 #include "CommonFunctions"
 #include "SkyBox"
@@ -21,7 +22,7 @@ int main( int argc, char** argv )
     
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable( new osg::ShapeDrawable(
-        new osg::Sphere(osg::Vec3(), scene->getBound().radius())) );
+        new osg::Sphere(osg::Vec3(), 100.0f)) );
     geode->setCullingActive( false );
     
     osg::ref_ptr<SkyBox> skybox = new SkyBox;
@@ -35,6 +36,9 @@ int main( int argc, char** argv )
     osg::ref_ptr<osg::Group> root = new osg::Group;
     root->addChild( scene.get() );
     root->addChild( skybox.get() );
+
+    osgUtil::PrintVisitor pv(std::cout);
+    root->accept(pv);
     
     osgViewer::Viewer viewer;
     viewer.setSceneData( root.get() );

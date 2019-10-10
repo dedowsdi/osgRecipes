@@ -60,7 +60,7 @@ void createMorphKeyframes( osgAnimation::FloatLinearChannel* ch )
 int main( int argc, char** argv )
 {
     osg::ref_ptr<osgAnimation::FloatLinearChannel> channel = new osgAnimation::FloatLinearChannel;
-    channel->setName( "0" );
+    channel->setName( "0" ); // channel name is used as weight index.
     channel->setTargetName( "MorphCallback" );
     createMorphKeyframes( channel.get() );
     
@@ -70,7 +70,6 @@ int main( int argc, char** argv )
     
     osg::ref_ptr<osgAnimation::BasicAnimationManager> manager = new osgAnimation::BasicAnimationManager;
     manager->registerAnimation( animation.get() );
-    manager->playAnimation( animation.get() );
     
     osg::ref_ptr<osgAnimation::MorphGeometry> morph =
         new osgAnimation::MorphGeometry( *createEmoticonGeometry(emoticonSource) );
@@ -78,8 +77,14 @@ int main( int argc, char** argv )
     
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable( morph.get() );
-    geode->setUpdateCallback( new osgAnimation::UpdateMorph("MorphCallback") );
+    osgAnimation::UpdateMorph* au = new osgAnimation::UpdateMorph("this name is not used");
+    // unlike UpdateMatrixTransform, it's object name is not used. An
+    // UpdateMorph object can has multiple target, you must add it.
+    au->addTarget("MorphCallback");
+    geode->setUpdateCallback(au);
     geode->getOrCreateStateSet()->setAttributeAndModes( new osg::Point(20.0f) );
+
+    manager->playAnimation( animation.get() );
     
     osg::ref_ptr<osg::Group> root = new osg::Group;
     root->addChild( geode.get() );
